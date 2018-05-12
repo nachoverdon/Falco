@@ -1,6 +1,5 @@
 package;
 
-
 import scenes.Scene;
 import scenes.SceneManager;
 import starling.events.Event;
@@ -9,7 +8,6 @@ import starling.core.Starling;
 
 
 class Main extends Sprite {
-	static inline var FPS = 60;
 	var starling: Starling;
     var currentScene: Scene;
 	
@@ -20,7 +18,7 @@ class Main extends Sprite {
 		starling = new Starling(Root, stage);
 		starling.addEventListener(Event.ROOT_CREATED, init);
         starling.start();
-        
+
         #if (debug)
         starling.showStats = true;
         #end
@@ -28,7 +26,7 @@ class Main extends Sprite {
 	}
 
     function init(event: Event, root: Root) {
-		Starling.current.nativeStage.frameRate = FPS;
+		Starling.current.nativeStage.frameRate = Config.FPS;
 		SceneManager.addRoot(root);
         SceneManager.showScene(new Scene());
     }
