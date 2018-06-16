@@ -1,21 +1,22 @@
 package falco.core;
 
 import falco.scenes.Scene;
-import falco.scenes.SceneManager;
+
 import starling.events.Event;
-import openfl.display.Sprite;
 import starling.core.Starling;
+import starling.display.Sprite;
+
+import openfl.display.Sprite as OFLSprite;
 
 
-class Main extends Sprite {
+class Main extends OFLSprite {
 	var starling: Starling;
-    var currentScene: Scene;
 	
-	public function new() {
+	public function new(sprite: Class<Sprite>) {
 		
 		super();
-		
-		starling = new Starling(Game, stage);
+
+		starling = new Starling(sprite, stage);
 		starling.addEventListener(Event.ROOT_CREATED, init);
         starling.start();
 
@@ -25,10 +26,10 @@ class Main extends Sprite {
 
 	}
 
-    function init(event: Event, root: Game) {
+    function init(event: Event, root: Sprite): Void {
+		starling.removeEventListener(Event.ROOT_CREATED, init);
 		Starling.current.nativeStage.frameRate = Config.FPS;
-		SceneManager.addRoot(root);
-        SceneManager.showScene(new Scene());
+		Scene.addRoot(root);
     }
 
 	
