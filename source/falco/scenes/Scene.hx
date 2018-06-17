@@ -5,28 +5,26 @@ import falco.objects.BaseObject;
 import starling.display.Sprite;
 
 class Scene extends BaseObject {
+    public static inline var ROOT_ADDED: String = 'ROOT_ADDED';
+    public static var current(default, null): Scene;
     static var rootSprite: Sprite;
-    static var currentScene: Scene;
 
     public function new() super();
 
     public static function addRoot(root: Sprite): Void {
-        Scene.rootSprite = root;
+        rootSprite = root;
+        rootSprite.dispatchEventWith(ROOT_ADDED);
     }
 
     public static function removeScene(): Void {
-        currentScene.removeFromParent(true);
-        currentScene = null;
+        current.removeFromParent(true);
+        current = null;
     }
 
     public static function showScene(scene: Scene): Void {
-        if (currentScene != null) removeScene();
+        if (current != null) removeScene();
 
-        currentScene = scene;
-        rootSprite.addChild(currentScene);
-    }
-
-    public static function getCurrent(): Scene {
-        return currentScene;
+        current = scene;
+        rootSprite.addChild(current);
     }
 }
