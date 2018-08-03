@@ -11,9 +11,9 @@ import openfl.display.Sprite as OFLSprite;
 
 class Main extends OFLSprite {
 	var starling: Starling;
-	
+
 	public function new(sprite: Class<Sprite>) {
-		
+
 		super();
 
 		starling = new Starling(sprite, stage);
@@ -32,5 +32,5 @@ class Main extends OFLSprite {
 		Scene.addRoot(root);
     }
 
-	
+
 }
