@@ -8,7 +8,6 @@ import starling.display.Sprite;
 
 import openfl.display.Sprite as OFLSprite;
 
-
 class Main extends OFLSprite {
     var starling: Starling;
 
