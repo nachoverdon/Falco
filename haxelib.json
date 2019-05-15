@@ -1,12 +1,12 @@
 {
 	"name": "falco",
+	"contributors": [ "nachoverdon" ],
 	"url": "https://github.com/nachoverdon/falco",
 	"license": "MIT",
 	"tags": ["game", "framework", "starling", "openfl", "falco"],
 	"description": "Game framework on top of Starling",
-	"version": "0.0.1-alpha",
+	"version": "0.0.1",
 	"releasenote": "Initial release",
-	"contributors": [ "nachoverdon" ],
 	"classPath": "source/",
 	"dependencies": {
 		"openfl": "",

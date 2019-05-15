@@ -1,0 +1,28 @@
+{
+    "haxe.displayConfigurations": [ // one or more configurations for the haxe completion server
+        [
+            "-cp", "source",
+
+            "-lib", "falco",
+
+            "-lib", "lime",
+
+            "-lib", "openfl",
+
+            "-lib", "starling",
+
+            "-neko", "falco.n",
+
+            "--no-output",
+        ] // a configuration is array of arguments passed to the completion server
+    ],
+    "haxe.displayServer": { // configuration for starting haxe completion server itself
+        "arguments": [
+            "-v"
+        ], // arguments before --wait (-v is useful for debugging)
+    },
+    "[haxe]": {
+        "editor.formatOnSave": true,
+        "editor.tabSize": 4,
+    },
+}
