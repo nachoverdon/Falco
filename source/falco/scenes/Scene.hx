@@ -1,18 +1,18 @@
 package falco.scenes;
 
-import falco.objects.BaseObject;
+import falco.display.Sprite;
 import falco.events.Event as FalcoEvent;
 
 import starling.events.Event;
-import starling.display.Sprite;
+import starling.display.Sprite as StarlingSprite;
 
-class Scene extends BaseObject {
+class Scene extends Sprite {
     public static var current(default, null): Scene;
-    static var rootSprite: Sprite;
+    static var rootSprite: StarlingSprite;
 
     public function new() super();
 
-    public static function addRoot(root: Sprite): Void {
+    public static function addRoot(root: StarlingSprite): Void {
         rootSprite = root;
         rootSprite.dispatchEvent(new Event(FalcoEvent.ROOT_ADDED));
     }
@@ -23,7 +23,9 @@ class Scene extends BaseObject {
     }
 
     public static function showScene(scene: Scene): Void {
-        if (current != null) removeScene();
+        if (current != null) {
+            removeScene();
+        }
 
         current = scene;
         rootSprite.addChild(current);

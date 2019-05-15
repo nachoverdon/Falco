@@ -1,10 +1,10 @@
 package falco.utils;
 
 class Pool<T> {
-    var array: Array<PoolItem>;
+    var array: Array<PoolItem<T>>;
 
     public function new() {
-        array = new Array<PoolItem>();
+        array = new Array<PoolItem<T>>();
     }
 
     public function add(item: T): Void {
@@ -13,7 +13,9 @@ class Pool<T> {
 
     public function remove(item: T): Bool {
         for (it in array) {
-            if (it.item == item) return array.remove(it);
+            if (it.item == item) {
+                return array.remove(it);
+            }
         }
 
         return false;
@@ -32,13 +34,15 @@ class Pool<T> {
 
     public function free(item: T): Void {
         for (it in array) {
-            if (it.item == item) it.available = true;
+            if (it.item == item) {
+                it.available = true;
+            }
         }
     }
 
 }
 
-typedef PoolItem = {
-    var item: Dynamic;
+typedef PoolItem<T> = {
+    var item: T;
     var available: Bool;
 }

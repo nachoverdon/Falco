@@ -7,12 +7,11 @@
 //	in accordance with the terms of the accompanying license agreement.
 //
 // =================================================================================================
-package display;
+package falco.display;
 
 /** A Disk represents a circle filled with a uniform color. */
-class Disk extends Ring
-{
-	public function new(xoff:Float, yoff:Float, radius:Float, color:Int = 0xffffff, alpha:Float = 1.0, nsides:Int = -1, ?startangle:Float){
-		super(xoff, yoff, 0, radius, color, alpha, nsides, startangle);
-	}
+class Disk extends Ring {
+    public function new(xoff:Float, yoff:Float, radius:Float, color:Int = 0xffffff, alpha:Float = 1.0, nsides:Int = -1, ?startangle:Float){
+        super(xoff, yoff, 0, radius, color, alpha, nsides, startangle);
+    }
 }

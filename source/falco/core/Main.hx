@@ -10,27 +10,25 @@ import openfl.display.Sprite as OFLSprite;
 
 
 class Main extends OFLSprite {
-	var starling: Starling;
+    var starling: Starling;
 
-	public function new(sprite: Class<Sprite>) {
+    public function new(sprite: Class<Sprite>) {
 
-		super();
+        super();
 
-		starling = new Starling(sprite, stage);
-		starling.addEventListener(Event.ROOT_CREATED, init);
+        starling = new Starling(sprite, stage);
+        starling.addEventListener(Event.ROOT_CREATED, init);
         starling.start();
 
         #if (debug)
         starling.showStats = true;
         #end
 
-	}
-
-    function init(event: Event, root: Sprite): Void {
-		starling.removeEventListener(Event.ROOT_CREATED, init);
-		Starling.current.nativeStage.frameRate = Config.FPS;
-		Scene.addRoot(root);
     }
 
+    function init(event: Event, root: Sprite): Void {
+        starling.removeEventListener(Event.ROOT_CREATED, init);
+        Scene.addRoot(root);
+    }
 
 }

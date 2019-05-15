@@ -1,9 +1,9 @@
 package falco.core;
 
 import falco.events.Event;
-import falco.objects.BaseObject;
+import falco.display.Sprite;
 
-class Game extends BaseObject {
+class Game extends Sprite {
     public function new() {
         super();
     }
