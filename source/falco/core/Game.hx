@@ -1,16 +1,29 @@
 package falco.core;
 
-import falco.events.Event;
+import openfl.Assets;
 import falco.display.Sprite;
+import starling.assets.AssetManager;
 
 class Game extends Sprite {
+	public static var assets(default, null):AssetManager;
+
 	public function new() {
 		super();
 	}
 
-	override function create():Void {
-		addEventListener(Event.ROOT_ADDED, loadAssets);
+	function loadAssets(paths:Array<String>) {
+		if (assets == null)
+			assets = new AssetManager();
+
+		assets.enqueue([for (path in paths) Assets.getPath(path)]);
+		assets.loadQueue(onAssetsLoadComplete, onAssetsLoadError, onAssetsLoadProgress);
 	}
 
-	function loadAssets():Void {}
+	function onAssetsLoadComplete() {}
+
+	function onAssetsLoadError(error:String) {
+		trace('[ERROR] Failed when trying to load the assets: $error');
+	}
+
+	function onAssetsLoadProgress(ratio:Float) {}
 }

@@ -7,7 +7,7 @@ class Pool<T> {
 		array = new Array<PoolItem<T>>();
 	}
 
-	public function add(item:T):Void {
+	public function add(item:T) {
 		array.push({item: item, available: true});
 	}
 
@@ -32,7 +32,7 @@ class Pool<T> {
 		return null;
 	}
 
-	public function free(item:T):Void {
+	public function free(item:T) {
 		for (it in array) {
 			if (it.item == item) {
 				it.available = true;

@@ -12,17 +12,17 @@ class Scene extends Sprite {
 	public function new()
 		super();
 
-	public static function addRoot(root:StarlingSprite):Void {
+	public static function addRoot(root:StarlingSprite) {
 		rootSprite = root;
 		rootSprite.dispatchEvent(new Event(FalcoEvent.ROOT_ADDED));
 	}
 
-	public static function removeScene():Void {
+	public static function removeScene() {
 		current.removeFromParent(true);
 		current = null;
 	}
 
-	public static function showScene(scene:Scene):Void {
+	public static function showScene(scene:Scene) {
 		if (current != null) {
 			removeScene();
 		}

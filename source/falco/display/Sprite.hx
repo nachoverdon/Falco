@@ -23,11 +23,11 @@ class Sprite extends StarlingSprite {
 		create();
 	}
 
-	function onEnterFrame(event:Event, dt:Float):Void {
+	function onEnterFrame(event:Event, dt:Float) {
 		update(dt);
 	}
 
-	function create():Void {}
+	function create() {}
 
-	function update(dt:Float):Void {}
+	function update(dt:Float) {}
 }
