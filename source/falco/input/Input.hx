@@ -8,6 +8,7 @@ import starling.display.Stage;
  * controlls.
 **/
 class Input {
+	static var initialized:Bool = false;
 	static var keys:Array<Bool>;
 	static var inputMap:Map<Int, String>;
 
@@ -16,10 +17,13 @@ class Input {
 	 * @param stage
 	**/
 	public static function init(stage:Stage) {
-		keys = new Array<Bool>();
-		inputMap = new Map<Int, String>();
-		stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
-		stage.addEventListener(KeyboardEvent.KEY_UP, onKeyUp);
+		if (!initialized) {
+			keys = new Array<Bool>();
+			inputMap = new Map<Int, String>();
+			stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
+			stage.addEventListener(KeyboardEvent.KEY_UP, onKeyUp);
+			initialized = true;
+		}
 	}
 
 	static function exists(key:Int):Bool {
