@@ -9,7 +9,7 @@
 // =================================================================================================
 package falco.display;
 
-import flash.geom.Point;
+import openfl.geom.Point;
 
 /**
  * A Line represents a segment with a thickness and uniform color or a color gradient.
