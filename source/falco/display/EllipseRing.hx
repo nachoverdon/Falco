@@ -9,20 +9,19 @@
 // =================================================================================================
 package falco.display;
 
-import flash.geom.Matrix;
-import flash.geom.Matrix3D;
 import flash.geom.Point;
-import flash.geom.Rectangle;
-import flash.geom.Vector3D;
 import starling.display.Sprite;
-import starling.display.Quad;
 
+/**
+ * A EllipseRing represents an ellipse filled with a uniform color, with an
+ * ellipse inside.
+**/
 class EllipseRing extends Sprite {
-	private var _innerRadius:Float;
-	private var _outerRadiusx:Float;
-	private var _outerRadius2x:Float;
-	private var _outerRadiusy:Float;
-	private var _outerRadius2y:Float;
+	var _innerRadius:Float;
+	var _outerRadiusx:Float;
+	var _outerRadius2x:Float;
+	var _outerRadiusy:Float;
+	var _outerRadius2y:Float;
 
 	public var _polygons:Array<Poly4>;
 
@@ -40,11 +39,13 @@ class EllipseRing extends Sprite {
 		var p0:Point = new Point();
 		var p1:Point = new Point();
 		var nParts:Int = Std.int(Math.max(Math.round(outerRadiusx * 1.0), 8));
-		if (nsides > -1)
+		if (nsides > -1) {
 			nParts = nsides;
+		}
 		var angle:Float = 0;
-		if (startangle != null)
+		if (startangle != null) {
 			angle = startangle;
+		}
 		for (i in 0...nParts) {
 			var a0:Float = angle + ((i + 0.0) * 2.0 * Math.PI / nParts);
 			var a1:Float = angle + ((i + 1.0) * 2.0 * Math.PI / nParts);
@@ -61,13 +62,18 @@ class EllipseRing extends Sprite {
 			p1.x = xoff + (outerRadiusx + ca1 * outerRadiusx);
 			p1.y = yoff + (outerRadiusy + sa1 * outerRadiusy);
 			var q:Poly4 = new Poly4(c0.x, c0.y, p0.x, p0.y, c1.x, c1.y, p1.x, p1.y, color);
-			if (alpha != 1.0)
+			if (alpha != 1.0) {
 				q.alpha = alpha;
+			}
 			_polygons.push(q);
 			addChild(q);
 		}
 	}
 
+	/**
+	 * Sets the color of the ellipse.
+	 * @param value Color in hex, ex 0xFF00FF
+	**/
 	public function setpolycolor(value:Int) {
 		for (i in 0..._polygons.length) {
 			_polygons[i].color = value;

@@ -6,6 +6,9 @@ import starling.core.Starling;
 import starling.display.Sprite;
 import openfl.display.Sprite as OFLSprite;
 
+/**
+ * This is the main entry point of your Falco application.
+**/
 class Falco extends OFLSprite {
 	var starling:Starling;
 

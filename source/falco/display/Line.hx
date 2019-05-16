@@ -11,14 +11,15 @@ package falco.display;
 
 import flash.geom.Point;
 
-/** A Line represents a segment with a thickness and uniform color or a color gradient.
+/**
+ * A Line represents a segment with a thickness and uniform color or a color gradient.
  *
  * <p>It inherit from the Poly4 class which means you can setup per-vertex color.
  * The first two points of the Poly4 are those associated with the `from` point of the Line.
  * The last two points are associated with the `to` point of the Line.</p>
  *
  *  @see Poly4
- */
+**/
 class Line extends Poly4 {
 	public var from:Point = new Point(0, 0);
 	public var to:Point = new Point(0, 0);
@@ -59,6 +60,13 @@ class Line extends Poly4 {
 		super(l1.x, l1.y, l2.x, l2.y, l3.x, l3.y, l4.x, l4.y, color);
 	}
 
+	/**
+	 * Changes the position of the line by setting the new coordinates
+	 * @param x1
+	 * @param y1
+	 * @param x2
+	 * @param y2
+	**/
 	public function setPosition(x1:Float, y1:Float, x2:Float, y2:Float) {
 		from.setTo(x1, y1);
 		to.setTo(x2, y2);

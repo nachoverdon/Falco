@@ -3,6 +3,11 @@ package falco.display;
 import starling.events.Event;
 import starling.display.Sprite as StarlingSprite;
 
+/**
+ * This is the base clase for every Falco object. It extends
+ * starling.display.Sprite and adds create() and update() methods for
+ * convenience.
+**/
 class Sprite extends StarlingSprite {
 	public function new(update = true) {
 		super();
@@ -18,7 +23,7 @@ class Sprite extends StarlingSprite {
 		}
 	}
 
-	function onAddedToStage():Void {
+	function onAddedToStage() {
 		removeEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
 		create();
 	}
