@@ -10,6 +10,9 @@ import starling.assets.AssetManager;
  * as an argument of new falco.core.Falco().
 **/
 class Game extends Sprite {
+	/**
+	 * ArrayManager exposed statically to be able to access easily
+	**/
 	public static var assets(default, null):AssetManager;
 
 	public function new() {

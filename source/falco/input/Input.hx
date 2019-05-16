@@ -18,7 +18,7 @@ class Input {
 	**/
 	public static function init(stage:Stage) {
 		if (!initialized) {
-			keys = new Array<Bool>();
+			keys = [];
 			inputMap = new Map<Int, String>();
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
 			stage.addEventListener(KeyboardEvent.KEY_UP, onKeyUp);

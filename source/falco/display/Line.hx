@@ -21,12 +21,39 @@ import openfl.geom.Point;
  *  @see Poly4
 **/
 class Line extends Poly4 {
+	/**
+	 * Coordinate points of the start of the line
+	**/
 	public var from:Point = new Point(0, 0);
+
+	/**
+	 * Coordinate points of the end of the line
+	**/
 	public var to:Point = new Point(0, 0);
+
+	/**
+	 * Point of the 1st line
+	**/
 	public var l1:Point = new Point(0, 0);
+
+	/**
+	 * Point of the 2nd line
+	**/
 	public var l2:Point = new Point(0, 0);
+
+	/**
+	 * Point of the 3rd line
+	**/
 	public var l3:Point = new Point(0, 0);
+
+	/**
+	 * Point of the 4th line
+	**/
 	public var l4:Point = new Point(0, 0);
+
+	/**
+	 * Thickness of the line in pixels
+	**/
 	public var thickness:Float;
 
 	public function new(x1:Float, y1:Float, x2:Float, y2:Float, thickness:Float, color:Int) {

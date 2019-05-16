@@ -7,7 +7,7 @@ class Pool<T> {
 	var array:Array<PoolItem<T>>;
 
 	public function new() {
-		array = new Array<PoolItem<T>>();
+		array = [];
 	}
 
 	/**
@@ -66,6 +66,12 @@ class Pool<T> {
  * Generic item that holds the value and a flag that tells if it's available.
 **/
 typedef PoolItem<T> = {
+	/**
+	 * The item itself.
+	**/
 	var item:T;
+	/**
+	 * A flag that tells if the item is available for consumption.
+	**/
 	var available:Bool;
 }

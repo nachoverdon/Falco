@@ -18,7 +18,7 @@
 		{
 			"props": {
 				"policy": "aligned",
-				"allowSingleline": false
+				"allowSingleline": true
 			},
 			"type": "ConditionalCompilation"
 		},
@@ -73,15 +73,37 @@
 		},
 		{
 			"props": {
-				"requireEmptyLineAfterPackage": false,
+				"requireEmptyLineAfterPackage": true,
 				"requireEmptyLineAfterInterface": false,
 				"requireEmptyLineAfterAbstract": false,
-				"allowEmptyLineAfterSingleLineComment": true,
+				"allowEmptyLineAfterSingleLineComment": false,
 				"max": 1,
 				"requireEmptyLineAfterClass": false,
-				"allowEmptyLineAfterMultiLineComment": true
+				"allowEmptyLineAfterMultiLineComment": false
 			},
 			"type": "EmptyLines"
+		},
+		{
+			"type": "EmptyBlock",
+			"props": {
+				"tokens": [
+					"CLASS_DEF",
+					"ENUM_DEF",
+					"ABSTRACT_DEF",
+					"TYPEDEF_DEF",
+					"INTERFACE_DEF",
+					"OBJECT_DECL",
+					"FUNCTION",
+					"FOR",
+					"IF",
+					"WHILE",
+					"SWITCH",
+					"TRY",
+					"CATCH"
+				],
+				"option": "empty",
+				"severity": "ERROR"
+			}
 		},
 		{
 			"props": {
@@ -106,7 +128,7 @@
 		{
 			"props": {
 				"requireParams": false,
-				"fieldType": "FUNCTIONS",
+				"fieldType": "BOTH",
 				"requireReturn": false,
 				"ignoreOverride": true,
 				"tokens": [
@@ -128,7 +150,8 @@
 			"props": {
 				"ignoreSetter": false,
 				"ignoreFormat": "^(main|run)$",
-				"ignoreConstructorParameter": true
+				"ignoreConstructorParameter": true,
+				"severity": "ERROR"
 			},
 			"type": "HiddenField"
 		},
@@ -155,6 +178,7 @@
 					"CLASS_DEF",
 					"ENUM_DEF",
 					"ABSTRACT_DEF",
+					"TYPEDEF_DEF",
 					"INTERFACE_DEF",
 					"FUNCTION",
 					"FOR",
@@ -171,16 +195,6 @@
 		},
 		{
 			"props": {
-				"tokens": [
-					"TYPEDEF_DEF"
-				],
-				"ignoreEmptySingleline": false,
-				"option": "eol"
-			},
-			"type": "LeftCurly"
-		},
-		{
-			"props": {
 				"max": 160,
 				"ignorePattern": "^$"
 			},
@@ -188,9 +202,9 @@
 		},
 		{
 			"props": {
-				"maxPrivate": 110,
-				"maxPublic": 110,
-				"maxTotal": 15
+				"maxPrivate": 100,
+				"maxPublic": 100,
+				"maxTotal": 100
 			},
 			"type": "MethodCount"
 		},
@@ -209,22 +223,22 @@
 		},
 		{
 			"props": {
-				"ternaryOpPolicy": "ignore",
+				"ternaryOpPolicy": "around",
 				"unaryOpPolicy": "none",
 				"boolOpPolicy": "around",
 				"intervalOpPolicy": "none",
 				"assignOpPolicy": "around",
-				"functionArgPolicy": "ignore",
-				"bitwiseOpPolicy": "ignore",
+				"functionArgPolicy": "around",
+				"bitwiseOpPolicy": "around",
 				"arithmeticOpPolicy": "around",
 				"compareOpPolicy": "around",
-				"arrowPolicy": "ignore"
+				"arrowPolicy": "around"
 			},
 			"type": "OperatorWhitespace"
 		},
 		{
 			"props": {
-				"max": 9,
+				"max": 10,
 				"ignoreOverriddenMethods": false
 			},
 			"type": "ParameterNumber"
@@ -283,15 +297,6 @@
 					"IF"
 				],
 				"option": "same"
-			},
-			"type": "RightCurly"
-		},
-		{
-			"props": {
-				"tokens": [
-					"OBJECT_DECL"
-				],
-				"option": "aloneorsingle"
 			},
 			"type": "RightCurly"
 		},
@@ -380,7 +385,9 @@
 			"type": "TypeDocComment"
 		},
 		{
-			"props": {},
+			"props": {
+				"severity": "ERROR"
+			},
 			"type": "UnnecessaryConstructor"
 		},
 		{
@@ -393,6 +400,139 @@
 		{
 			"props": {},
 			"type": "UnusedLocalVar"
+		},
+		{
+			"props": {
+				"option": "upperCase",
+				"severity": "ERROR"
+			},
+			"type": "HexadecimalLiteral"
+		},
+		{
+			"type": "DefaultComesLast",
+			"props": {
+
+			}
+		},
+		{
+			"type": "InnerAssignment",
+			"props": {
+				"ignoreReturnAssignments": true
+			}
+		},
+		{
+			"type": "SimplifyBooleanExpression",
+			"props": {
+				"severity": "ERROR"
+			}
+		},
+		{
+			"type": "SimplifyBooleanReturn",
+			"props": {
+				"severity": "ERROR"
+			}
+		},
+		{
+			"type": "Interface",
+			"props": {
+				"allowProperties": true,
+				"allowMarkerInterfaces": true
+			}
+		},
+		{
+			"type": "ArrayLiteral",
+			"props": {
+				"severity": "ERROR"
+			}
+		},
+		{
+			"type": "MultipleStringLiterals",
+			"props": {
+				"minLength": 2,
+				"ignore": "^\\s+$",
+				"allowDuplicates": 2
+			}
+		},
+		{
+			"type": "LocalVariableName",
+			"props": {
+				"severity": "ERROR",
+				"format": "^[a-z][a-zA-Z0-9]*$"
+			}
+		},
+		{
+			"type": "MemberName",
+			"props": {
+				"severity": "ERROR",
+				"format": "^[a-z][a-zA-Z0-9]*$",
+				"tokens": [
+					"PUBLIC",
+					"PRIVATE",
+					"CLASS"
+				]
+			}
+		},
+		{
+			"type": "MethodName",
+			"props": {
+				"severity": "ERROR",
+				"format": "^[a-z][a-zA-Z0-9]*$",
+				"tokens": [
+					"PUBLIC",
+					"PRIVATE"
+				]
+			}
+		},
+		{
+			"type": "ParameterName",
+			"props": {
+				"severity": "ERROR",
+				"format": "^[a-z][a-zA-Z0-9]*$"
+			}
+		},
+		{
+			"type": "TypeName",
+			"props": {
+				"severity": "ERROR",
+				"format": "^[A-Z]+[a-zA-Z0-9]*$",
+				"tokens": [
+					"CLASS",
+					"ENUM",
+					"TYPEDEF"
+				]
+			}
+		},
+		{
+			"type": "TypeName",
+			"props": {
+				"severity": "ERROR",
+				"format": "^I[A-Z]+[a-zA-Z0-9]*$",
+				"tokens": [
+					"INTERFACE"
+				]
+			}
+		},
+		{
+			"type": "TabForAligning",
+			"props": {}
+		},
+		{
+			"type": "WhitespaceAfter",
+			"props": {
+				"tokens": [
+					",",
+					";"
+				]
+			}
+		},
+		{
+			"type": "WhitespaceAround",
+			"props": {
+				"tokens": [
+					"=",
+					"+"
+				]
+			}
 		}
 	],
 	"numberOfCheckerThreads": 5

@@ -10,6 +10,9 @@ import starling.display.Sprite as StarlingSprite;
  * scenes...
 **/
 class Scene extends Sprite {
+	/**
+	 * Current Scene being displayed.
+	**/
 	public static var current(default, null):Scene;
 	static var rootSprite:StarlingSprite;
 

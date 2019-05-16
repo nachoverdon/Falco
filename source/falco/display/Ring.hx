@@ -16,19 +16,22 @@ import starling.display.Sprite;
  * A Ring represents an circle filled with a uniform color, with a circle inside.
 **/
 class Ring extends Sprite {
-	var _innerRadius:Float;
-	var _outerRadius:Float;
-	var _outerRadius2:Float;
+	var innerRadius:Float;
+	var outerRadius:Float;
+	var outerRadius2:Float;
 
-	public var _polygons:Array<Poly4>;
+	/**
+	 * An array containing the polygons that form this circle.
+	**/
+	public var polygons:Array<Poly4>;
 
-	public function new(xoff:Float, yoff:Float, innerRadius:Float, outerRadius:Float, color:Int = 0xffffff, alpha:Float = 1.0, nsides:Int = -1,
+	public function new(xoff:Float, yoff:Float, innerRadius:Float, outerRadius:Float, color:Int = 0xFFFFFF, alpha:Float = 1.0, nsides:Int = -1,
 			?startangle:Float) {
 		super();
-		_polygons = new Array<Poly4>();
-		_innerRadius = innerRadius;
-		_outerRadius = outerRadius;
-		_outerRadius2 = outerRadius * outerRadius;
+		polygons = [];
+		this.innerRadius = innerRadius;
+		this.outerRadius = outerRadius;
+		outerRadius2 = outerRadius * outerRadius;
 		var c0:Point = new Point();
 		var c1:Point = new Point();
 		var p0:Point = new Point();
@@ -60,7 +63,7 @@ class Ring extends Sprite {
 			if (alpha != 1.0) {
 				q.alpha = alpha;
 			}
-			_polygons.push(q);
+			polygons.push(q);
 			addChild(q);
 		}
 	}
@@ -70,8 +73,8 @@ class Ring extends Sprite {
 	 * @param value Color in hex, ex 0xFF00FF
 	**/
 	public function setpolycolor(value:Int) {
-		for (i in 0..._polygons.length) {
-			_polygons[i].color = value;
+		for (i in 0...polygons.length) {
+			polygons[i].color = value;
 		}
 	}
 }

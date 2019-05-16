@@ -32,9 +32,26 @@ import starling.display.DisplayObject;
  *  @see Image
 **/
 class Poly4 extends Quad {
+	static inline var POSITION:String = 'position';
+
+	/**
+	 * Point of the 1st vertex
+	**/
 	public var p1:Point = new Point(0, 0);
+
+	/**
+	 * Point of the 2nd vertex
+	**/
 	public var p2:Point = new Point(0, 0);
+
+	/**
+	 * Point of the 3rd vertex
+	**/
 	public var p3:Point = new Point(0, 0);
+
+	/**
+	 * Point of the 4th vertex
+	**/
 	public var p4:Point = new Point(0, 0);
 
 	var xmin:Float = 0;
@@ -43,7 +60,7 @@ class Poly4 extends Quad {
 	var ymax:Float = 0;
 
 	public function new(x1:Float = 0, y1:Float = 0, x2:Float = 0, y2:Float = 0, x3:Float = 0, y3:Float = 0, x4:Float = 0, y4:Float = 0,
-			color:Int = 0xffffff) {
+			color:Int = 0xFFFFFF) {
 		p1.setTo(x1, y1);
 		p2.setTo(x2, y2);
 		p3.setTo(x3, y3);
@@ -55,14 +72,14 @@ class Poly4 extends Quad {
 		ymax = max4(p1.y, p2.y, p3.y, p4.y);
 		super(xmax - xmin, ymax - ymin, color);
 
-		vertexData.setPoint(0, 'position', p1.x - xmin, p1.y - ymin);
-		vertexData.setPoint(1, 'position', p2.x - xmin, p2.y - ymin);
-		vertexData.setPoint(2, 'position', p3.x - xmin, p3.y - ymin);
-		vertexData.setPoint(3, 'position', p4.x - xmin, p4.y - ymin);
+		vertexData.setPoint(0, POSITION, p1.x - xmin, p1.y - ymin);
+		vertexData.setPoint(1, POSITION, p2.x - xmin, p2.y - ymin);
+		vertexData.setPoint(2, POSITION, p3.x - xmin, p3.y - ymin);
+		vertexData.setPoint(3, POSITION, p4.x - xmin, p4.y - ymin);
 		// onVertexDataChanged();
 		x = xmin;
 		y = ymin;
-		_lowerRight.setTo(xmax - xmin, ymax - ymin);
+		lowerRight.setTo(xmax - xmin, ymax - ymin);
 	}
 
 	/**
@@ -88,17 +105,17 @@ class Poly4 extends Quad {
 		ymax = max4(p1.y, p2.y, p3.y, p4.y);
 		readjustSize(xmax - xmin, ymax - ymin);
 
-		vertexData.setPoint(0, 'position', p1.x - xmin, p1.y - ymin);
-		vertexData.setPoint(1, 'position', p2.x - xmin, p2.y - ymin);
-		vertexData.setPoint(2, 'position', p3.x - xmin, p3.y - ymin);
-		vertexData.setPoint(3, 'position', p4.x - xmin, p4.y - ymin);
+		vertexData.setPoint(0, POSITION, p1.x - xmin, p1.y - ymin);
+		vertexData.setPoint(1, POSITION, p2.x - xmin, p2.y - ymin);
+		vertexData.setPoint(2, POSITION, p3.x - xmin, p3.y - ymin);
+		vertexData.setPoint(3, POSITION, p4.x - xmin, p4.y - ymin);
 		// onVertexDataChanged();
 		x = xmin;
 		y = ymin;
-		_lowerRight.setTo(xmax - xmin, ymax - ymin);
+		lowerRight.setTo(xmax - xmin, ymax - ymin);
 	}
 
-	var _lowerRight:Point = new Point(0, 0);
+	var lowerRight:Point = new Point(0, 0);
 
 	inline function min4(a:Float, b:Float, c:Float, d:Float):Float {
 		return Math.min(a, Math.min(b, Math.min(c, d)));
@@ -115,12 +132,12 @@ class Poly4 extends Quad {
 
 		// optimization
 		if (targetSpace == this) {
-			resultRect.setTo(0.0, 0.0, _lowerRight.x, _lowerRight.y);
+			resultRect.setTo(0.0, 0.0, lowerRight.x, lowerRight.y);
 			// optimization
 		} else if (targetSpace == parent && rotation == 0.0) {
 			var scaleX:Float = this.scaleX;
 			var scaleY:Float = this.scaleY;
-			resultRect.setTo(x - pivotX * scaleX, y - pivotY * scaleY, _lowerRight.x * scaleX, _lowerRight.y * scaleY);
+			resultRect.setTo(x - pivotX * scaleX, y - pivotY * scaleY, lowerRight.x * scaleX, lowerRight.y * scaleY);
 			if (scaleX < 0) {
 				resultRect.width *= -1;
 				resultRect.x -= resultRect.width;

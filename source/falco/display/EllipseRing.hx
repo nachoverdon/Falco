@@ -17,23 +17,26 @@ import starling.display.Sprite;
  * ellipse inside.
 **/
 class EllipseRing extends Sprite {
-	var _innerRadius:Float;
-	var _outerRadiusx:Float;
-	var _outerRadius2x:Float;
-	var _outerRadiusy:Float;
-	var _outerRadius2y:Float;
+	var innerRadius:Float;
+	var outerRadiusx:Float;
+	var outerRadius2x:Float;
+	var outerRadiusy:Float;
+	var outerRadius2y:Float;
 
-	public var _polygons:Array<Poly4>;
+	/**
+	 * An array containing the polygons that form this ellipse.
+	**/
+	public var polygons:Array<Poly4>;
 
-	public function new(xoff:Float, yoff:Float, innerRadius:Float, outerRadiusx:Float, outerRadiusy:Float, color:Int = 0xffffff, alpha:Float = 1.0,
+	public function new(xoff:Float, yoff:Float, innerRadius:Float, outerRadiusx:Float, outerRadiusy:Float, color:Int = 0xFFFFFF, alpha:Float = 1.0,
 			nsides:Int = -1, ?startangle:Float) {
 		super();
-		_polygons = new Array<Poly4>();
-		_innerRadius = innerRadius;
-		_outerRadiusx = outerRadiusx;
-		_outerRadius2x = outerRadiusx * outerRadiusx;
-		_outerRadiusy = outerRadiusy;
-		_outerRadius2y = outerRadiusy * outerRadiusy;
+		polygons = [];
+		this.innerRadius = innerRadius;
+		this.outerRadiusx = outerRadiusx;
+		outerRadius2x = outerRadiusx * outerRadiusx;
+		this.outerRadiusy = outerRadiusy;
+		outerRadius2y = outerRadiusy * outerRadiusy;
 		var c0:Point = new Point();
 		var c1:Point = new Point();
 		var p0:Point = new Point();
@@ -65,7 +68,7 @@ class EllipseRing extends Sprite {
 			if (alpha != 1.0) {
 				q.alpha = alpha;
 			}
-			_polygons.push(q);
+			this.polygons.push(q);
 			addChild(q);
 		}
 	}
@@ -75,8 +78,8 @@ class EllipseRing extends Sprite {
 	 * @param value Color in hex, ex 0xFF00FF
 	**/
 	public function setpolycolor(value:Int) {
-		for (i in 0..._polygons.length) {
-			_polygons[i].color = value;
+		for (i in 0...polygons.length) {
+			polygons[i].color = value;
 		}
 	}
 }
