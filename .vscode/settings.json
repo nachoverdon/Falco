@@ -22,7 +22,6 @@
         ], // arguments before --wait (-v is useful for debugging)
     },
     "[haxe]": {
-        "editor.formatOnSave": true,
         "editor.tabSize": 4,
     },
 }
