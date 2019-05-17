@@ -17,9 +17,11 @@ class Falco extends OFLSprite {
 
 		starling = new Starling(sprite, stage);
 		starling.addEventListener(Event.ROOT_CREATED, init);
+		starling.skipUnchangedFrames = true;
 		starling.start();
 
 		#if (debug)
+		starling.enableErrorChecking = true;
 		starling.showStats = true;
 		#end
 	}
