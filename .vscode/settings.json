@@ -1,5 +1,5 @@
 {
-    "haxe.displayConfigurations": [ // one or more configurations for the haxe completion server
+    "haxe.configurations": [ // one or more configurations for the haxe completion server
         [
             "-cp", "source",
 
