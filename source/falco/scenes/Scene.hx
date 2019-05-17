@@ -14,6 +14,7 @@ class Scene extends Sprite {
 	 * Current Scene being displayed.
 	**/
 	public static var current(default, null):Scene;
+
 	static var rootSprite:StarlingSprite;
 
 	public function new()
@@ -35,6 +36,7 @@ class Scene extends Sprite {
 	public static function removeScene() {
 		current.removeFromParent(true);
 		current = null;
+		rootSprite.dispatchEvent(new Event(FalcoEvent.SCENE_REMOVED));
 	}
 
 	/**
@@ -48,5 +50,6 @@ class Scene extends Sprite {
 
 		current = scene;
 		rootSprite.addChild(current);
+		rootSprite.dispatchEvent(new Event(FalcoEvent.SCENE_ADDED));
 	}
 }
