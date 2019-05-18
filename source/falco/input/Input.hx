@@ -8,15 +8,15 @@ import starling.display.Stage;
  * controlls.
 **/
 class Input {
-	static var initialized:Bool = false;
-	static var keys:Array<Bool>;
-	static var inputMap:Map<Int, String>;
+	static var initialized: Bool = false;
+	static var keys: Array<Bool>;
+	static var inputMap: Map<Int, String>;
 
 	/**
 	 * Initializes the Input handling and sets the event listeners.
 	 * @param stage
 	**/
-	public static function init(stage:Stage) {
+	public static function init(stage: Stage) {
 		if (!initialized) {
 			keys = [];
 			inputMap = new Map<Int, String>();
@@ -26,7 +26,7 @@ class Input {
 		}
 	}
 
-	static function exists(key:Int):Bool {
+	static function exists(key: Int): Bool {
 		if (Std.int(key) > keys.length - 1) {
 			return false;
 		}
@@ -34,13 +34,13 @@ class Input {
 		return keys[key];
 	}
 
-	static function onKeyDown(e:KeyboardEvent) {
+	static function onKeyDown(e: KeyboardEvent) {
 		if (isUp(e.keyCode)) {
 			keys[e.keyCode] = true;
 		}
 	}
 
-	static function onKeyUp(e:KeyboardEvent) {
+	static function onKeyUp(e: KeyboardEvent) {
 		if (isDown(e.keyCode)) {
 			keys[e.keyCode] = false;
 		}
@@ -51,7 +51,7 @@ class Input {
 	 * @param name
 	 * @param key
 	**/
-	public static function setInput(name:String, key:Int) {
+	public static function setInput(name: String, key: Int) {
 		inputMap.set(key, name);
 		keys[key] = false;
 	}
@@ -62,7 +62,7 @@ class Input {
 	 * @param name
 	 * @param keysArr
 	**/
-	public static function setInputs(name:String, keysArr:Array<Int>) {
+	public static function setInputs(name: String, keysArr: Array<Int>) {
 		for (key in keysArr) {
 			setInput(name, key);
 		}
@@ -73,7 +73,7 @@ class Input {
 	 * @param name
 	 * @return Bool
 	**/
-	public static function is(name:String):Bool {
+	public static function is(name: String): Bool {
 		for (key in inputMap.keys()) {
 			if (inputMap.get(key) == name && isDown(key)) {
 				return true;
@@ -88,7 +88,7 @@ class Input {
 	 * @param key
 	 * @return Bool
 	**/
-	public static function isDown(key:Int):Bool {
+	public static function isDown(key: Int): Bool {
 		return exists(key);
 	}
 
@@ -97,7 +97,7 @@ class Input {
 	 * @param key
 	 * @return Bool
 	**/
-	public static function isUp(key:Int):Bool {
+	public static function isUp(key: Int): Bool {
 		return !exists(key);
 	}
 
@@ -106,7 +106,7 @@ class Input {
 	 * @param keysArr
 	 * @return Bool
 	**/
-	public static function isAnyDown(keysArr:Array<Int>):Bool {
+	public static function isAnyDown(keysArr: Array<Int>): Bool {
 		for (key in keysArr) {
 			if (isDown(key)) {
 				return true;
@@ -121,7 +121,7 @@ class Input {
 	 * @param keysArr
 	 * @return Bool
 	**/
-	public static function isAnyUp(keysArr:Array<Int>):Bool {
+	public static function isAnyUp(keysArr: Array<Int>): Bool {
 		for (key in keysArr) {
 			if (isUp(key)) {
 				return true;

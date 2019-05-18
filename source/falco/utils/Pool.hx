@@ -4,7 +4,7 @@ package falco.utils;
  * Generic item pool to easily manage several items of the same type.
 **/
 class Pool<T> {
-	var array:Array<PoolItem<T>>;
+	var array: Array<PoolItem<T>>;
 
 	public function new() {
 		array = [];
@@ -14,7 +14,7 @@ class Pool<T> {
 	 * Adds an item to the pool, immediatelly available.
 	 * @param item
 	**/
-	public function add(item:T) {
+	public function add(item: T) {
 		array.push({item: item, available: true});
 	}
 
@@ -23,7 +23,7 @@ class Pool<T> {
 	 * @param item
 	 * @return Bool
 	**/
-	public function remove(item:T):Bool {
+	public function remove(item: T): Bool {
 		for (it in array) {
 			if (it.item == item) {
 				return array.remove(it);
@@ -38,7 +38,7 @@ class Pool<T> {
 	 * found.
 	 * @return T
 	**/
-	public function getFirstAvailable():Null<T> {
+	public function getFirstAvailable(): Null<T> {
 		for (item in array) {
 			if (item.available) {
 				item.available = false;
@@ -53,7 +53,7 @@ class Pool<T> {
 	 * Makes the item available.
 	 * @param item
 	**/
-	public function free(item:T) {
+	public function free(item: T) {
 		for (it in array) {
 			if (it.item == item) {
 				it.available = true;
@@ -69,9 +69,10 @@ typedef PoolItem<T> = {
 	/**
 	 * The item itself.
 	**/
-	var item:T;
+	var item: T;
+
 	/**
 	 * A flag that tells if the item is available for consumption.
 	**/
-	var available:Bool;
+	var available: Bool;
 }

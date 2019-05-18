@@ -13,13 +13,13 @@ class Game extends Sprite {
 	/**
 	 * ArrayManager exposed statically to be able to access easily
 	**/
-	public static var assets(default, null):AssetManager;
+	public static var assets(default, null): AssetManager;
 
 	public function new() {
 		super();
 	}
 
-	function loadAssets(paths:Array<String>) {
+	function loadAssets(paths: Array<String>) {
 		if (assets == null) {
 			assets = new AssetManager();
 		}
@@ -34,9 +34,9 @@ class Game extends Sprite {
 
 	function onAssetsLoadComplete() {}
 
-	function onAssetsLoadError(error:String) {
+	function onAssetsLoadError(error: String) {
 		throw '[ERROR] Failed when trying to load the assets: $error';
 	}
 
-	function onAssetsLoadProgress(ratio:Float) {}
+	function onAssetsLoadProgress(ratio: Float) {}
 }

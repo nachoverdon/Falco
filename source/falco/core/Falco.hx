@@ -10,9 +10,9 @@ import openfl.display.Sprite as OFLSprite;
  * This is the main entry point of your Falco application.
 **/
 class Falco extends OFLSprite {
-	var starling:Starling;
+	var starling: Starling;
 
-	public function new(sprite:Class<Sprite>) {
+	public function new(sprite: Class<Sprite>) {
 		super();
 
 		starling = new Starling(sprite, stage);
@@ -26,7 +26,7 @@ class Falco extends OFLSprite {
 		#end
 	}
 
-	function init(event:Event, root:Sprite) {
+	function init(event: Event, root: Sprite) {
 		starling.removeEventListener(Event.ROOT_CREATED, init);
 		Scene.addRoot(root);
 	}

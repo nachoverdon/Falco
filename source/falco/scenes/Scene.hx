@@ -13,9 +13,9 @@ class Scene extends Sprite {
 	/**
 	 * Current Scene being displayed.
 	**/
-	public static var current(default, null):Scene;
+	public static var current(default, null): Scene;
 
-	static var rootSprite:StarlingSprite;
+	static var rootSprite: StarlingSprite;
 
 	public function new()
 		super();
@@ -25,7 +25,7 @@ class Scene extends Sprite {
 	 * the event system.
 	 * @param root
 	**/
-	public static function addRoot(root:StarlingSprite) {
+	public static function addRoot(root: StarlingSprite) {
 		rootSprite = root;
 		rootSprite.dispatchEvent(new Event(FalcoEvent.ROOT_ADDED));
 	}
@@ -43,7 +43,7 @@ class Scene extends Sprite {
 	 * Sets the given scene, removing the previous one.
 	 * @param scene
 	**/
-	public static function showScene(scene:Scene) {
+	public static function showScene(scene: Scene) {
 		if (current != null) {
 			removeScene();
 		}

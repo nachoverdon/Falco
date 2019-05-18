@@ -24,49 +24,49 @@ class Line extends Poly4 {
 	/**
 	 * Coordinate points of the start of the line
 	**/
-	public var from:Point = new Point(0, 0);
+	public var from: Point = new Point(0, 0);
 
 	/**
 	 * Coordinate points of the end of the line
 	**/
-	public var to:Point = new Point(0, 0);
+	public var to: Point = new Point(0, 0);
 
 	/**
 	 * Point of the 1st line
 	**/
-	public var l1:Point = new Point(0, 0);
+	public var l1: Point = new Point(0, 0);
 
 	/**
 	 * Point of the 2nd line
 	**/
-	public var l2:Point = new Point(0, 0);
+	public var l2: Point = new Point(0, 0);
 
 	/**
 	 * Point of the 3rd line
 	**/
-	public var l3:Point = new Point(0, 0);
+	public var l3: Point = new Point(0, 0);
 
 	/**
 	 * Point of the 4th line
 	**/
-	public var l4:Point = new Point(0, 0);
+	public var l4: Point = new Point(0, 0);
 
 	/**
 	 * Thickness of the line in pixels
 	**/
-	public var thickness:Float;
+	public var thickness: Float;
 
-	public function new(x1:Float, y1:Float, x2:Float, y2:Float, thickness:Float, color:Int) {
+	public function new(x1: Float, y1: Float, x2: Float, y2: Float, thickness: Float, color: Int) {
 		from.setTo(x1, y1);
 		to.setTo(x2, y2);
 		this.thickness = thickness;
 
-		var dx:Float = to.x - from.x;
-		var dy:Float = to.y - from.y;
-		var l:Float = Math.sqrt(dx * dx + dy * dy);
-		var u:Point = new Point(dx / l, dy / l);
-		var v:Point = new Point(u.y, -u.x);
-		var halfT:Float = thickness * 0.5;
+		var dx: Float = to.x - from.x;
+		var dy: Float = to.y - from.y;
+		var l: Float = Math.sqrt(dx * dx + dy * dy);
+		var u: Point = new Point(dx / l, dy / l);
+		var v: Point = new Point(u.y, -u.x);
+		var halfT: Float = thickness * 0.5;
 
 		l1 = from.clone();
 		l1.offset(v.x * halfT, v.y * halfT);
@@ -94,16 +94,16 @@ class Line extends Poly4 {
 	 * @param x2
 	 * @param y2
 	**/
-	public function setPosition(x1:Float, y1:Float, x2:Float, y2:Float) {
+	public function setPosition(x1: Float, y1: Float, x2: Float, y2: Float) {
 		from.setTo(x1, y1);
 		to.setTo(x2, y2);
 
-		var dx:Float = to.x - from.x;
-		var dy:Float = to.y - from.y;
-		var l:Float = Math.sqrt(dx * dx + dy * dy);
-		var u:Point = new Point(dx / l, dy / l);
-		var v:Point = new Point(u.y, -u.x);
-		var halfT:Float = thickness * 0.5;
+		var dx: Float = to.x - from.x;
+		var dy: Float = to.y - from.y;
+		var l: Float = Math.sqrt(dx * dx + dy * dy);
+		var u: Point = new Point(dx / l, dy / l);
+		var v: Point = new Point(u.y, -u.x);
+		var halfT: Float = thickness * 0.5;
 
 		l1 = from.clone();
 		l1.offset(v.x * halfT, v.y * halfT);

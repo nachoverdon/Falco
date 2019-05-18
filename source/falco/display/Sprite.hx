@@ -9,7 +9,7 @@ import starling.display.Sprite as StarlingSprite;
  * convenience.
 **/
 class Sprite extends StarlingSprite {
-	public function new(update = true) {
+	public function new(update: Bool = true) {
 		super();
 
 		if (stage != null) {
@@ -28,11 +28,11 @@ class Sprite extends StarlingSprite {
 		create();
 	}
 
-	function onEnterFrame(event:Event, dt:Float) {
+	function onEnterFrame(event: Event, dt: Float) {
 		update(dt);
 	}
 
 	function create() {}
 
-	function update(dt:Float) {}
+	function update(dt: Float) {}
 }
