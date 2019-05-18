@@ -21,7 +21,15 @@
             "-v"
         ], // arguments before --wait (-v is useful for debugging)
     },
+    "codedox": {
+        "commentdescription": "\n",
+        "paramFormat": "@param   ${name} ",
+        "returnFormat": "@return  ${type}",
+        "commentend": "**/"
+    },
     "[haxe]": {
+        "editor.insertSpaces": false,
+        "editor.detectIndentation": false,
         "editor.formatOnSave": true,
         "editor.tabSize": 4,
     },
