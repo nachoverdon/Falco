@@ -15,7 +15,10 @@ class Pool<T> {
 	 * @param item
 	**/
 	public function add(item: T) {
-		array.push({item: item, available: true});
+		array.push({
+			item: item,
+			available: true
+		});
 	}
 
 	/**
@@ -59,6 +62,14 @@ class Pool<T> {
 				it.available = true;
 			}
 		}
+	}
+
+	/**
+	 * Returns the amount of items in the pool, available or unavailable.
+	 * @return  Int
+	**/
+	public function length(): Int {
+		return array.length;
 	}
 }
 
